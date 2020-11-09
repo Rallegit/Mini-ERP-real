@@ -18,7 +18,13 @@ td, th {
     border: 1px solid #ddd;
     text-align: left;
     padding: 8px;
+    width: 400px;
+    text-align: center;
 }
-
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
 tr:nth-child(even) {background: #ddd;}
-
