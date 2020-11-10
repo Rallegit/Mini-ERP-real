@@ -28,3 +28,14 @@ h2{
     text-align: center;
 }
 tr:nth-child(even) {background: #ddd;}
+
+
+div{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+img{
+    width: auto;
+    height: auto;
+}

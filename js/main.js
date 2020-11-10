@@ -1,6 +1,7 @@
 var xhr 			= new XMLHttpRequest();
 var xhr2 			= new XMLHttpRequest();
 var xhr3 			= new XMLHttpRequest();
+var xhr4			= new XMLHttpRequest();
 xhr.withCredentials = true;
 let syncProducts 	= document.getElementById('syncproducts');
 let syncPosts 		= document.getElementById('syncposts');
@@ -9,6 +10,7 @@ let syncMedia 		= document.getElementById('syncmedia');
 let productsListed 	= document.getElementById('content');
 let postsListed 	= document.getElementById('posts');
 let ordersListed 	= document.getElementById('orders')
+let mediaListed 	= document.getElementById('media')
 let subject 		= "";
 
 
@@ -104,6 +106,31 @@ xhr3.addEventListener("readystatechange", function() {
   	}	
 });
 
+xhr4.addEventListener("readystatechange", function() {
+
+	if(this.readyState === 4 && this.status === 200) {
+		let mediainfo = JSON.parse(this.responseText);
+		console.log(mediainfo)
+
+		mediaListed.innerHTML = "";
+
+		let titlemedia = Object.keys(mediainfo).length;
+		for (let i = 0; i < titlemedia; i++) {
+			
+			let listItemFour = document.createElement('div');
+			let mediaImage = mediainfo[i].source_url;
+
+			
+
+			listItemFour.innerHTML = 
+			"<div>"+ "<img src=" + mediaImage + " height='auto' width='300px' >" + "</div>"
+			
+			mediaListed.appendChild(listItemFour);
+			
+	  	}
+  	}	
+});
+
 
 syncProducts.addEventListener('click', function() {
 	xhr.open("GET", "https://butik.rsodergren.se/wp-json/wc/v3/products");
@@ -121,4 +148,10 @@ syncOrders.addEventListener('click', function() {
 	xhr3.open("GET", "https://butik.rsodergren.se/wp-json/wc/v3/orders");
 	xhr3.setRequestHeader("Authorization", "Basic Y2tfNTQyYzQyNGQ1MWNjYzJiZjc2OTRmY2JiNWRjZDEyOTFkZTRmNzA1MDpjc182ZmY3NTY4ZjZlYzY2NmQ5YjYyNDUwMDU4YmRlNDk3NjgxOGIzMzIx");
 	xhr3.send();
+});
+
+syncMedia.addEventListener('click', function() {
+xhr4.open("GET", "https://butik.rsodergren.se/wp-json/wp/v2/media");
+xhr4.setRequestHeader("Authorization", "Basic Y2tfNTQyYzQyNGQ1MWNjYzJiZjc2OTRmY2JiNWRjZDEyOTFkZTRmNzA1MDpjc182ZmY3NTY4ZjZlYzY2NmQ5YjYyNDUwMDU4YmRlNDk3NjgxOGIzMzIx");
+xhr4.send();
 });
