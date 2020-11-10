@@ -1,0 +1,41 @@
+h1 {
+    font-size: 7vh;
+    color: rgb(223, 178, 29);
+}
+nav{
+    display:flex;
+    justify-content: center;
+}
+ul li{
+    display:inline; 
+    padding:20px;
+}
+
+/* el tabellos */
+table {width: 100%;}
+
+td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    width: 400px;
+    text-align: center;
+}
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+tr:nth-child(even) {background: #ddd;}
+
+
+div{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+img{
+    width: auto;
+    height: auto;
+}
